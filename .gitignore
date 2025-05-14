@@ -1,0 +1,12 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node, build, etc.
+node_modules/
+
+# VS Code
+.vscode/
+
+# WordPress uploads, cache (if tracked from higher levels)
+wp-content/uploads/
