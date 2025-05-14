@@ -54,7 +54,7 @@ h1 {
 ****/
   #site-header {
     position: fixed;
- background-color: #f2c94c;
+
     width: 100%;
     padding: 20px 40px;
     z-index: 9999 !important;
@@ -326,6 +326,168 @@ h1 {
   }
   
 
+  /*************** Apartments Page ***************/
+
+
+.apartments-page {
+      background-color: #f8f8f8;
+
+}
+
+
+ .rooms-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.room-card {
+  position: relative;
+  width: 40%;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+.room-card:hover {
+  transform: scale(1.03);
+}
+
+.room-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  transition: background 0.3s ease;
+}
+
+.room-card:hover::before {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.room-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.room-overlay .hotel-name {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.room-overlay h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.view-btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background: white;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+  background: black;
+  color: white;
+}
+
+.apartments-intro {
+  text-align: center;
+  padding: 80px 20px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.apartments-intro h2 {
+  font-size: 36px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.apartments-intro p {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/*************** Services and Policies *************/
+
+.services-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 100px 20px;
+  background-color: #f8f8f8;
+  gap: 2px; /* Space between label and list */
+}
+
+.services-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 3rem;
+  color: #888;
+  letter-spacing: 4px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Full height of parent */
+  padding-top: 20px;
+}
+
+.services-content {
+  max-width: 800px;
+}
+
+.services-content h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: #333;
+  text-align: left;
+}
+
+.services-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.services-content li {
+  font-size: 20px;
+  color: #444;
+  margin-bottom: 14px;
+  line-height: 1.8;
+}
+
+
+
+/********************** Media **************/
+
+
   @media (max-width: 768px) {
     .footer-container {
       flex-direction: column;
@@ -338,3 +500,4 @@ h1 {
     }
   }
   
+
