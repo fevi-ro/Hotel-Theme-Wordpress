@@ -435,51 +435,85 @@ h1 {
 /*************** Services and Policies *************/
 
 .services-section {
+  background-color: #f9f9f9;
+  padding: 80px 20px;
+}
+
+.services-grid {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 100px 20px;
-  background-color: #f8f8f8;
-  gap: 2px; /* Space between label and list */
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin-left: 5rem;
+  gap: 10rem;
+}
+
+.services-wrapper,
+.policies-wrapper {
+
+  display: flex;
+  gap: 30px;
 }
 
 .services-label {
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  transform: rotate(180deg);
-  font-size: 3rem;
-  color: #888;
-  letter-spacing: 4px;
+  font-size: 2.5rem;
   font-weight: bold;
+  letter-spacing: 4px;
+  color: #555;
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100%; /* Full height of parent */
-  padding-top: 20px;
+  text-align: center;
+  background-color: transparent;
+  min-height: 100%;
+  margin-top: -8rem;
+
+}
+.services-label span {
+  transform: rotate(180deg); /*upright instead of upside-down */
+  display: block;
 }
 
-.services-content {
-  max-width: 800px;
+.services-label span {
+  display: block;
 }
 
-.services-content h2 {
-  font-size: 32px;
+.services-list,
+.policies-list {
+list-style-type: disc;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: #333;
+  padding-left: 2px;
+  margin: 0;
+   list-style-image: url('../../images/arrow1.png'); /* Make sure the icon is small */
+
+}
+
+
+
+.policies-wrapper h2 {
+  font-size: 24px;
   margin-bottom: 20px;
   text-transform: uppercase;
   color: #333;
-  text-align: left;
 }
 
-.services-content ul {
+
+
+
+
+
+.services-list ul, .policies-list ul {
   list-style-type: disc;
-  padding-left: 20px;
+
   margin: 0;
 }
 
-.services-content li {
-  font-size: 20px;
+.services-list li, .policies-list li {
+  font-size: 1.5rem;
   color: #444;
-  margin-bottom: 14px;
+  margin-bottom: 1rem;
   line-height: 1.8;
 }
 
