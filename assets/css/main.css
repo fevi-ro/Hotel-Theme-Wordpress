@@ -1,10 +1,36 @@
+/*
+Theme Name: My Custom Theme
+Theme URI: http://pnoe-hotel-theme.com
+Author: Your Name
+Author URI: http://pnoe-hotel-theme.com
+Description: A custom WordPress theme
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: my-custom-theme
+*/
+
+  
+
+  
+
+  
+:root {
+  --color-primary: #f2c94c;
+  --color-text: #1c1c1c;
+  --color-text-light: #666666;
+  --color-bg-footer: #f4f4f4;
+  --font-primary: 'Poiret One', sans-serif;
+  --font-secondary: 'Montserrat', sans-serif;
+}
+
+
 
 body {
-    font-family: 'Poiret One', sans-serif;
- 
-    margin: 0;
+  font-family: var(--font-primary);
+  margin: 0;
+}
 
-  }
 
   
   .container {
@@ -37,21 +63,11 @@ h1 {
 /*********** Header **********/
 
   .logo img {
-    height: 60px; /* Adjust as needed */
+    height: 60px; 
     width: auto;
   }
 
-  /*****
-  .site-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px; 
-    align-items: center;
 
-    
-  }  
-  
-****/
   #site-header {
     position: fixed;
 
@@ -133,39 +149,27 @@ h1 {
   
 
   
-  .main-menu a {
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #1c1c1c;
-    font-weight: 500;
-    font-size: 16px;
-    transition: color 0.2s;
-    letter-spacing: 0.5px;
-  }
-  
+.main-menu a {
+  font-family: var(--font-secondary);
+  color: var(--color-text);
+}
 
-  .main-menu a:hover {
-    color: #f2c94c; /* highlight on hover */
-  }
-  
+.main-menu a:hover {
+  color: var(--color-primary);
+}
+
   
 /********** hero **************/
 
-  .hero {
- background: url('../../images/hero.jpg');
-    background-size: cover;
-    height: 200vh; /* Full screen */
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    margin-top: 0;
-    z-index: 1;
-
-
-  }
+.hero {
+  background: url('<?php echo get_template_directory_uri(); ?>/images/hero.jpg') no-repeat center center;
+  background-size: cover;
+  height: 200vh;
+  width: 100%;
+  position: relative;
+  margin-top: 0;
+  z-index: 1;
+}
 
   /* Place text in the middle of the image */
 .hero-text {
@@ -274,12 +278,10 @@ h1 {
 
   /**************** Footer ******************/
 
-  .site-footer {
-    background-color: #f4f4f4; 
-    padding: 40px 20px;
-    color: #333;
-    font-size: 14px;
-  }
+.site-footer {
+  background-color: var(--color-bg-footer);
+  color: var(--color-text);
+}
   
   .footer-container {
     max-width: 1200px;
@@ -316,7 +318,7 @@ h1 {
   }
   
   .social-icons a:hover {
-    color: #0073e6; /* Or your brand color */
+    color: #0073e6; 
   }
   
   .rights {
@@ -333,104 +335,84 @@ h1 {
       background-color: #f8f8f8;
 
 }
-
-
- .rooms-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  padding: 4rem 2rem;
+.rooms-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 2rem !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding: 0 1rem !important;
 }
 
 .room-card {
   position: relative;
-  width: 40%;
-  aspect-ratio: 4 / 3;
   background-size: cover;
   background-position: center;
-  border-radius: 10px;
+  max-width: 450px; 
+  height: 300px !important;
+  border: 2px solid red;
+  border-radius: 8px;
   overflow: hidden;
-  transition: transform 0.5s ease;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .room-card:hover {
-  transform: scale(1.03);
-}
-
-.room-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  transition: background 0.3s ease;
-}
-
-.room-card:hover::before {
-  background: rgba(0, 0, 0, 0.6);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .room-overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  z-index: 2;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.7));
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.room-overlay .hotel-name {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 0.5rem;
+.room-card:hover .room-overlay {
+  opacity: 1;
 }
 
 .room-overlay h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+}
+
+.hotel-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: auto;
+  color: #ddd;
   text-transform: uppercase;
 }
 
 .view-btn {
-  display: inline-block;
-  padding: 0.7rem 1.5rem;
-  background: white;
-  color: black;
-  text-transform: uppercase;
-  font-weight: bold;
-  border-radius: 25px;
+  align-self: flex-start;
+  background-color: #f2a365;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 20px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 }
 
 .view-btn:hover {
-  background: black;
-  color: white;
+  background-color: #d97f3c;
 }
 
-.apartments-intro {
-  text-align: center;
-  padding: 80px 20px 40px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.apartments-intro h2 {
-  font-size: 36px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  letter-spacing: 2px;
-  color: #333;
-}
-
-.apartments-intro p {
-  font-size: 18px;
-  color: #666;
-  line-height: 1.6;
-}
 
 /*************** Services and Policies *************/
 
@@ -443,8 +425,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
-  margin-left: 5rem;
-  gap: 10rem;
+ margin: 0 auto;
 }
 
 .services-wrapper,
@@ -501,7 +482,19 @@ list-style-type: disc;
 
 
 
+.policies-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
+.policies-content p, .policies-content li {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 1.5rem;
+  text-align: justify; /* or center */
+}
 
 
 .services-list ul, .policies-list ul {
@@ -516,22 +509,79 @@ list-style-type: disc;
   margin-bottom: 1rem;
   line-height: 1.8;
 }
+/******************* Contact *************/
+
+.contact-content form {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-content input,
+.contact-content textarea,
+.contact-content select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.contact-content input[type="submit"],
+.contact-content button {
+  background-color: #333;
+  color: white;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-content input[type="submit"]:hover,
+.contact-content button:hover {
+  background-color: #000;
+}
 
 
+
+/***************** Gallery *****************/
+
+.gallery-section {
+  background-color: #f9f9f9;
+  padding: 80px 20px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
 /********************** Media **************/
 
 
-  @media (max-width: 768px) {
-    .footer-container {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-  
-    .footer-left, .footer-right {
-      margin: 20px 0;
-    }
+@media (max-width: 768px) {
+  .rooms-grid {
+    flex-direction: column;
+    align-items: center;
   }
   
+  .room-card {
+    width: 90% !important;
+  }
 
+  .services-grid {
+    flex-direction: column !important;
+    margin-left: 0 !important;
+    gap: 2rem !important;
+  }
+
+  .services-wrapper, .policies-wrapper {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+}
